@@ -8,3 +8,7 @@
 npm run dev:start
 
 Make sure that the app is running at http://localhost:3000
+
+### About the system
+- Framework: https://expressjs.com/
+- Getting started: https://expressjs.com/en/starter/installing.html
