@@ -13,7 +13,7 @@ app.get('/check-status', (req, res) => {
         if(!err){
           res.send(`${response.elapsedTime}`)
         } else{
-          res.send(null)
+          res.send(err.code)
         }
       })
 })
