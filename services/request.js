@@ -1,25 +1,12 @@
-export function getRequests() {
-    Request
-        .find()
-        .then((err, requests) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log(requests);
-            }
-    });
+function getRequests() {
+    return Request.find();
 }
 
-export function addRequest() {
+function addRequest(duration) {
     const date = new Request({
-        duration: 1000
+        date: new Date(),
+        duration: duration
     })
 
-    date.save()
-    .then(doc => {
-        console.log(doc)
-    })
-    .catch(err => {
-        console.error(err)
-    });
+    return date.save();
 }
