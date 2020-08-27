@@ -1,22 +1,21 @@
 export function getRequests() {
-    User
+    Request
         .find()
-        .then((err, users) => {
+        .then((err, requests) => {
             if (err) {
-                 console.log(err);
+                console.log(err);
             } else {
-                console.log(users);
+                console.log(requests);
             }
-            
-        });
+    });
 }
 
 export function addRequest() {
-    const tatev = new User({
-        name: 'Tatev'
+    const date = new Request({
+        duration: 1000
     })
 
-    tatev.save()
+    date.save()
     .then(doc => {
         console.log(doc)
     })
