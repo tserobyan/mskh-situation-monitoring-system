@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require("mongoose");
 const User = require('./models/user')
+const Request = require('./models/request')
 mongoose.connect('mongodb://localhost:27017/myDb', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection
     .on('error', console.log)
@@ -29,6 +30,28 @@ const db = mongoose.connection
                 console.log(users);
             }
             
+        });
+
+        const date = new require({
+            duration: '1000 ms'
+        })
+    
+        date.save()
+        .then(doc => {
+            console.log(doc)
+        })
+        .catch(err => {
+            console.error(err)
+        });
+
+        Request
+            .find()
+            .then((err, requests) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(requests);
+                }
         });
       
 const app = express()
