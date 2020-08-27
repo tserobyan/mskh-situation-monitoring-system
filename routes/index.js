@@ -6,6 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Mskh Situation Monitoring System' });
 });
+
 router.get('/check-status', (req, res) => {
   request.get({
     url: 'https://mskh.am/',
