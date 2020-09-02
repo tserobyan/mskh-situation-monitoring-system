@@ -1,5 +1,6 @@
 function getRequests() {
     return Request.find();
+      
 }
 
 function addRequest(duration) {

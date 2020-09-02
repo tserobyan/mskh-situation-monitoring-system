@@ -1,13 +1,14 @@
 var express = require('express');
 var request = require('request');
-const { addRequest } = require('../services/request');
+const { addRequest, getRequests } = require('../services/request');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  getRequests().then((requests) => {
-    res.render('index', { title: `Mskh Situation Monitoring System (${requests.length})` });
+ getRequests().then((requests) => {
+    res.render('index', { title: `Mskh Situation Monitoring System`, body:`number of records : ${requests.lenght} ` });
   })
+  
 });
 
 router.get('/check-status', (req, res) => {
