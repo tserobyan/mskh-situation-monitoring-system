@@ -41,3 +41,10 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+cron.schedule("00 00 */1 * * * *", () => {
+  console.log("Hourly ",new Date());
+  },{
+  scheduled: true,
+  timezone:"Europe/Rome"
+  });
