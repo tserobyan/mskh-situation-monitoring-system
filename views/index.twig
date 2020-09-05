@@ -1,7 +1,13 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <h1>{{title}}</h1>
-  <p>{{body}}</p>
-	<div id="chart_div"></div>
+	<h1>{{title}}</h1>
+	<p>{{body}}</p>
+	<div id="dashboard">
+		<div id="chart_div"></div>
+		<div id="control_div"></div>
+		<p>
+			<span id='dbgchart'></span>
+		</p>
+	</div>
 {% endblock %}

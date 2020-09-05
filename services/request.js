@@ -4,10 +4,11 @@ exports.getRequests = () => {
     return Request.find();      
 }
 
-exports.addRequest = (duration) => {
+exports.addRequest = (duration, imagePath) => {
     const date = new Request({
         date: new Date(),
-        duration: duration
+        duration,
+        imagePath
     })
 
     return date.save();
