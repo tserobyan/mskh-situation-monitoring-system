@@ -25,9 +25,9 @@ function main(data) {
         let date = new Date(i.date)
         chartData.push([
             date,
-            i.timing,
-            `${i.timing} <br> ${(i.error)?i.error+'<br>':''}<img class='tooltipImage' src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/GNOME_Screenshot_icon_2018.svg/1200px-GNOME_Screenshot_icon_2018.svg.png'>`,
-            `color: ${(i.error) ? '#e02020' : (i.timing > 1500) ? '#cccc22' : '#66cc22'}`,
+            i.duration,
+            `${i.duration} <br> ${(i.error)?i.error+'<br>':''}<img class='tooltipImage' src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/GNOME_Screenshot_icon_2018.svg/1200px-GNOME_Screenshot_icon_2018.svg.png'>`,
+            `color: ${(i.error) ? '#e02020' : (i.duration > 1500) ? '#cccc22' : '#66cc22'}`,
         ]);
     }
     google.charts.load('current', { 'packages': ['corechart'] });

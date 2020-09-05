@@ -20,7 +20,7 @@ var data = [
 /* GET home page. */
 router.get('/', (req, res, next) => {
  getRequests().then((requests) => {
-    res.render('index', { title: `Mskh Situation Monitoring System`, body:`number of records : ${requests.lenght} ` });
+    res.render('index', { title: `Mskh Situation Monitoring System`, body:`number of records : ${requests.lenght} `, data:JSON.stringify(requests) });
   })
   
 });
