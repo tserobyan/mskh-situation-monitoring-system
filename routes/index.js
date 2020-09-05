@@ -1,5 +1,6 @@
 var express = require('express');
 var request = require('request');
+const { addRequest, getRequests } = require('../services/request');
 var router = express.Router();
 var data = [
   { date: '2020-08-27 6:00', timing: 2082 },
@@ -17,8 +18,11 @@ var data = [
 ];
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Mskh Situation Monitoring System', data: JSON.stringify(data) });
+router.get('/', (req, res, next) => {
+ getRequests().then((requests) => {
+    res.render('index', { title: `Mskh Situation Monitoring System`, body:`number of records : ${requests.lenght} ` });
+  })
+  
 });
 
 router.get('/check-status', (req, res) => {
@@ -27,7 +31,9 @@ router.get('/check-status', (req, res) => {
     time: true
   }, function (err, response) {
     if (!err) {
-      res.render('check-status', { title: 'Timing', value: `${response.elapsedTime}` });
+      addRequest(response.elapsedTime).then(() => {
+        res.render('check-status', { title: 'Timing', value: `${response.elapsedTime}` });
+      })
     } else {
       res.render('check-status', { title: 'Error', value: `${err.code}` });
     }
