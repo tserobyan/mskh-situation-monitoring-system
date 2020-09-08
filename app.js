@@ -8,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var cron = require('node-cron');
 var app = express();
 
 // view engine setup
@@ -40,11 +41,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+cron.schedule('0 0 * * * *', () => {
+  console.log('run at:', new Date().toISOString());
+});
 
-cron.schedule("00 00 */1 * * * *", () => {
-  console.log("Hourly ",new Date());
-  },{
-  scheduled: true,
-  timezone:"Europe/Rome"
-  });
+module.exports = app;
