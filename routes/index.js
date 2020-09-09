@@ -34,8 +34,9 @@ async function checkStatus() {
   await page.goto('https://mskh.am');
   await page.setViewport(screenshotSettings.size);
   const performanceTiming = JSON.parse(
-    await page.evaluate(() => JSON.stringify(window.performance.timing))
-  );
+    await page.evaluate(() => JSON.stringify(window.performance.getEntriesByType("navigation")))
+  )[0];
+  console.log(performanceTiming);
   imagePath = screenshotSettings.save.path + new Date().getTime() + screenshotSettings.save.format;
   await page.screenshot({ path: './public' + imagePath, fullPage: true });
   await browser.close();
