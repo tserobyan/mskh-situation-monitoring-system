@@ -4,12 +4,12 @@ const { addRequest, getRequests } = require('../services/request');
 var router = express.Router();
 var screenshotSettings = {
   size: {
-    width: 1960,
-    height: 1080,
-    deviceScaleFactor: 1,
+    width: 480,
+    height: 600,
+    deviceScaleFactor: 0.5,
   },
   save: {
-    path: '/assets/',
+    path: '/assets/screenshots/',
     format: '.png'
   }
 };
@@ -37,7 +37,7 @@ async function checkStatus() {
     await page.evaluate(() => JSON.stringify(window.performance.timing))
   );
   imagePath = screenshotSettings.save.path + new Date().getTime() + screenshotSettings.save.format;
-  await page.screenshot({ path: './public' + imagePath });
+  await page.screenshot({ path: './public' + imagePath, fullPage: true });
   await browser.close();
   return {
     duration: performanceTiming.domContentLoadedEventEnd - performanceTiming.requestStart,

@@ -5,6 +5,7 @@
 - go to project directory and run `npm install`
 - copy .env-example file and paste as .env file in the same folder
 - change any params that you need to change in .env file 
+- create screenshots folder on public/assets folder
 - run `npm run start`
 
 Make sure that the app is running at http://localhost:8000
