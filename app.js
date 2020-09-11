@@ -5,8 +5,10 @@ var cookieParser = require('cookie-parser');
 var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
 require('dotenv').config();
+const { addRequest } = require('./services/request');
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index').router;
+var checkStatus = require('./routes/index').checkStatus;
 
 require('./services/db-connection')
 var cron = require('node-cron');
@@ -42,7 +44,9 @@ app.use(function(err, req, res, next) {
 });
 
 cron.schedule('0 0 * * * *', () => {
-  console.log('run at:', new Date().toISOString());
+  checkStatus().then((response) => {
+    addRequest(response.duration, response.imagePath);
+  });
 });
 
 module.exports = app;
