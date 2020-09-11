@@ -10,7 +10,7 @@ var screenshotSettings = {
   },
   save: {
     path: '/assets/screenshots/',
-    format: '.png'
+    format: '.pneg'
   }
 };
 
