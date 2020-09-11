@@ -10,6 +10,10 @@ const requestSchema = new Schema({
         type: Number,
         require: [true, 'duration is required']
     },
+    imagePath: {
+        type: String,
+        require: false
+    },
 });
 
 module.exports = mongoose.model('Request', requestSchema)
