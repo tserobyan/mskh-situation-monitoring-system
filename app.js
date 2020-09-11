@@ -47,6 +47,7 @@ cron.schedule('0 0 * * * *', () => {
   checkStatus().then((response) => {
     addRequest(response.duration, response.imagePath);
   });
+  console.log('run at:', new Date().toISOString());
 });
 
 module.exports = app;
