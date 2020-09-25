@@ -15,6 +15,7 @@
     "less-middleware": "~2.2.1",
     "morgan": "~1.9.1",
     "puppeteer": "^5.2.1",
+    "node-cron": "^2.0.3",
     "twig": "^0.10.3"
   },
   "devDependencies": {

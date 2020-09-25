@@ -46,4 +46,6 @@ async function checkStatus() {
   };
 }
 
-module.exports = router;
+module.exports = {
+  router, checkStatus
+}

@@ -5,10 +5,13 @@ var cookieParser = require('cookie-parser');
 var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
 require('dotenv').config();
+const { addRequest } = require('./services/request');
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index').router;
+var checkStatus = require('./routes/index').checkStatus;
 
 require('./services/db-connection')
+var cron = require('node-cron');
 var app = express();
 
 // view engine setup
@@ -38,6 +41,13 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+cron.schedule('0 0 * * * *', () => {
+  checkStatus().then((response) => {
+    addRequest(response.duration, response.imagePath);
+  });
+  console.log('run at:', new Date().toISOString());
 });
 
 module.exports = app;
