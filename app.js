@@ -40,4 +40,23 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+var email   = require("./path/to/emailjs/email");
+var server  = email.server.connect({
+    user: "mindfreelt", 
+    password: "mindfreemskh", 
+    host:       "smtp.gmail.com", 
+    ssl:        true
+});
+
+// send the message and get a callback with an error or details of the message that was sent
+server.send({
+    text:  "We have an error", 
+    from:  "you <mindfreelt@gmail.com>", 
+    to:    "someone <lisatsaturyan@gmail.com>",
+    cc:    "else <tatevayvazyan28@gmail.com>",
+    subject: "Check your site"
+}, 
+
+function(err, message) { console.log(err || message); });
+
 module.exports = app;
